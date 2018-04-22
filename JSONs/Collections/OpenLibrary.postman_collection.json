@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "f6624c39-433c-4086-838d-540703e040ff",
+		"name": "OpenLibrary",
+		"description": "This collection has the calls for OpenLibrary page.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Subject Endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "886023c3-75cb-418e-b5a2-ec8dc4887fed",
+						"type": "text/javascript",
+						"exec": [
+							"// Load Postman BDD",
+							"eval(globals.postmanBDD);",
+							"",
+							"describe('Get Subject info', () => {",
+							"",
+							"  it('should return a not empty 200 code json response', () => {",
+							"    response.should.have.status(200);",
+							"    response.should.not.be.empty",
+							"    response.should.be.json;",
+							"  });",
+							"  ",
+							"  it('Response should be an object with all the keys', () => {",
+							"    response.body.should.be.an('object').with.keys(['publishers','subject_type','name','places','people','publishing_history','times','languages','subjects','key','authors','ebook_count','works','work_count']);",
+							"  });",
+							"  ",
+							"  it('Response should have properties', () => {",
+							"    response.body.should.have.property('subject_type', 'subject');",
+							"    response.body.should.have.property('name', 'Love');",
+							"    response.body.should.have.property('key', '/subjects/love');",
+							"  });",
+							"  ",
+							"  it('Some nodes should be a non empty array', () => {",
+							"    response.body.publishers.should.be.an('Array').and.not.empty;",
+							"    response.body.places.should.be.an('Array').and.not.empty;",
+							"    response.body.people.should.be.an('Array').and.not.empty;",
+							"    response.body.publishing_history.should.be.an('Array').and.not.empty;",
+							"    response.body.times.should.be.an('Array').and.not.empty;",
+							"    response.body.languages.should.be.an('Array').and.not.empty;",
+							"    response.body.subjects.should.be.an('Array').and.not.empty;",
+							"    response.body.authors.should.be.an('Array').and.not.empty;",
+							"    response.body.works.should.be.an('Array').and.not.empty;",
+							"  });",
+							"",
+							"  it('publisher should have not empty properies', () => {",
+							"    var publishers = response.body.publishers[0];",
+							"    publishers.should.have.property('name').and.not.be.empty",
+							"    publishers.should.have.property('key').and.not.be.empty",
+							"  });",
+							"",
+							"  it('places should have not empty properies', () => {",
+							"    var places = response.body.places[0];",
+							"    places.should.have.property('name').and.not.be.empty",
+							"    places.should.have.property('key').and.not.be.empty",
+							"  });",
+							"",
+							"  it('people should have not empty properies', () => {",
+							"    var people = response.body.people[0];",
+							"    people.should.have.property('name').and.not.be.empty",
+							"    people.should.have.property('key').and.not.be.empty",
+							"  });",
+							"",
+							"  it('times should have not empty properies', () => {",
+							"    var times = response.body.times[0];",
+							"    times.should.have.property('name').and.not.be.empty",
+							"    times.should.have.property('key').and.not.be.empty",
+							"  });",
+							"",
+							"  it('languages should have not empty properies', () => {",
+							"    var languages = response.body.languages[0];",
+							"    languages.should.have.property('name').and.not.be.empty",
+							"  });",
+							"  ",
+							"  it('subjects should have not empty properies', () => {",
+							"    var subjects = response.body.subjects[0];",
+							"    subjects.should.have.property('name').and.not.be.empty",
+							"    subjects.should.have.property('key').and.not.be.empty",
+							"  });",
+							"  ",
+							"  it('authors should have not empty properies', () => {",
+							"    var authors = response.body.authors[0];",
+							"    authors.should.have.property('name').and.not.be.empty",
+							"    authors.should.have.property('key').and.not.be.empty",
+							"  });",
+							"",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{loveSubject}}?details=true&limit=1&ebooks=true",
+					"host": [
+						"{{loveSubject}}"
+					],
+					"query": [
+						{
+							"key": "details",
+							"value": "true"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "ebooks",
+							"value": "true"
+						}
+					]
+				},
+				"description": "Subject endpoint"
+			},
+			"response": []
+		}
+	]
+}

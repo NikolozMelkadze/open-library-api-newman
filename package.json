@@ -1,0 +1,7 @@
+{
+  "name": "open-library-api-tests",
+  "version": "0.0.1",
+  "dependencies": {
+    "newman": "3.9.3"
+  }
+}
