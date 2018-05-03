@@ -1,3 +1,3 @@
 default: test
 test:
-	node ./Tests/API_ENDPOINT1_TESTS.js
+	node ./Tests/open-library-api-tests.js
